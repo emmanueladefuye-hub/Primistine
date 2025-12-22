@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, ChevronDown } from 'lucide-react';
 
 const Contact = () => {
     return (
@@ -96,16 +96,21 @@ const Contact = () => {
 
                             <div>
                                 <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Project Type</label>
-                                <select className="w-full bg-primary border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-accent-teal transition-colors appearance-none scrollbar-hide">
-                                    <option>Solar Installation & Renewable Energy</option>
-                                    <option>House Wiring and Electrical Installations</option>
-                                    <option>Industrial Electrical Installations</option>
-                                    <option>CCTV Installation and Surveillance Systems</option>
-                                    <option>Generator Changeover and Power Integration</option>
-                                    <option>Earthing and Surge Protection Systems</option>
-                                    <option>Electrical Maintenance, Audits, and Fault Troubleshooting</option>
-                                    <option>Other</option>
-                                </select>
+                                <div className="relative">
+                                    <select className="w-full bg-primary border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-accent-teal transition-colors appearance-none cursor-pointer">
+                                        <option>Solar Installation & Renewable Energy</option>
+                                        <option>House Wiring and Electrical Installations</option>
+                                        <option>Industrial Electrical Installations</option>
+                                        <option>CCTV Installation and Surveillance Systems</option>
+                                        <option>Generator Changeover and Power Integration</option>
+                                        <option>Earthing and Surge Protection Systems</option>
+                                        <option>Electrical Maintenance, Audits, and Fault Troubleshooting</option>
+                                        <option>Other</option>
+                                    </select>
+                                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500">
+                                        <ChevronDown className="h-5 w-5" />
+                                    </div>
+                                </div>
                             </div>
 
                             <div>
