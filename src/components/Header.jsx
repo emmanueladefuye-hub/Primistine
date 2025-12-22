@@ -59,23 +59,20 @@ const Header = () => {
                     </Link>
                 </nav>
 
-                <div className="flex items-center gap-3 md:hidden">
-                    {/* Mobile Persistent CTA */}
-                    <Link
-                        to="/contact-us"
-                        className="btn-primary py-2 px-4 text-[11px] font-bold uppercase tracking-wider relative"
-                        onClick={() => setIsOpen(false)}
-                    >
-                        Request Quote
-                    </Link>
-
+                <div className="flex items-center md:hidden">
                     {/* Mobile Menu Toggle */}
                     <button
-                        className="relative p-2 -mr-2 text-white transition-transform active:scale-90"
+                        className="relative p-2 -mr-2 text-white transition-all active:scale-90"
                         onClick={() => setIsOpen(!isOpen)}
                         aria-label="Toggle menu"
                     >
-                        {isOpen ? <X className="h-7 w-7 text-accent-gold" /> : <Menu className="h-7 w-7" />}
+                        {isOpen ? (
+                            <div className="bg-accent-gold/10 p-2 rounded-lg">
+                                <X className="h-6 w-6 text-accent-gold" />
+                            </div>
+                        ) : (
+                            <Menu className="h-7 w-7" />
+                        )}
                     </button>
                 </div>
             </div>
