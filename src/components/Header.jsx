@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ShieldCheck, ArrowRight, Phone, Mail } from 'lucide-react';
+import { Menu, X, ArrowRight, Phone, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import logoImg from '../assets/images/official_logo.png';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -34,11 +35,15 @@ const Header = () => {
             {/* Header Content Container - Controlled Layering */}
             <div className="relative z-[150] max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
                 {/* Logo */}
-                <Link to="/" className="flex items-center gap-2 group relative">
-                    <ShieldCheck className="h-8 w-8 text-accent-gold group-hover:text-white transition-colors" />
+                <Link to="/" className="flex items-center gap-3 group relative h-12 md:h-14">
+                    <img
+                        src={logoImg}
+                        alt="Primistine Logo"
+                        className="h-full w-auto object-contain rounded-lg"
+                    />
                     <div className="flex flex-col">
-                        <span className="text-xl font-display font-bold text-white tracking-wide">PRIMISTINE</span>
-                        <span className="text-[10px] text-accent-teal uppercase tracking-[0.2em]">Electric Ltd</span>
+                        <span className="text-xl font-display font-bold text-white tracking-wide leading-none">PRIMISTINE</span>
+                        <span className="text-[10px] text-accent-teal uppercase tracking-[0.2em] mt-1">Electric Limited</span>
                     </div>
                 </Link>
 

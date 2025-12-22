@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShieldCheck, Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
+import logoImg from '../assets/images/official_logo.png';
 
 const Footer = () => {
     return (
@@ -8,8 +9,12 @@ const Footer = () => {
             <div className="section-padding py-0 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 {/* Brand */}
                 <div className="col-span-1 md:col-span-1">
-                    <Link to="/" className="flex items-center gap-2 mb-4">
-                        <ShieldCheck className="h-8 w-8 text-accent-gold" />
+                    <Link to="/" className="flex items-center gap-3 mb-6 h-14 md:h-16">
+                        <img
+                            src={logoImg}
+                            alt="Primistine Logo"
+                            className="h-full w-auto object-contain rounded-lg"
+                        />
                         <span className="text-xl font-display font-bold text-white tracking-wide">PRIMISTINE</span>
                     </Link>
                     <p className="text-slate-400 text-sm leading-relaxed mb-4">
