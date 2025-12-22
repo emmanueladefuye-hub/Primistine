@@ -44,6 +44,8 @@ const Differentiation = () => {
                             src={boardImg}
                             alt="Organized Distribution Board"
                             className="w-full h-auto"
+                            loading="lazy"
+                            decoding="async"
                         />
                         {/* Overlay card */}
                         <div className="absolute -bottom-6 -left-6 bg-[#0A192F] p-6 rounded-lg border border-white/10 shadow-xl max-w-xs">

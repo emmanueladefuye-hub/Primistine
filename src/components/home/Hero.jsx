@@ -50,16 +50,18 @@ const Hero = () => {
 
                 {/* Visual Content */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
+                    initial={{ opacity: 0, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="relative group"
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className="relative group gpu-accelerated"
                 >
-                    <div className="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#0A192F]/50 backdrop-blur-sm p-2">
+                    <div className="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#0A192F]/50 lg:backdrop-blur-sm p-2">
                         <img
                             src={heroImg}
                             alt="Electrical Engineering Precision"
                             className="rounded-xl w-full h-auto object-cover aspect-[4/3] lg:aspect-auto"
+                            loading="eager"
+                            decoding="async"
                         />
                         <div className="absolute bottom-4 right-4 md:bottom-6 md:left-6 bg-primary/90 p-4 rounded-lg border-l-4 border-accent-gold shadow-lg">
                             <p className="text-accent-teal text-[10px] font-bold uppercase mb-1">System Status</p>
@@ -68,7 +70,7 @@ const Hero = () => {
                         </div>
                     </div>
                     {/* Decorative shapes */}
-                    <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-accent-teal/10 rounded-full blur-3xl"></div>
+                    <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-accent-teal/10 rounded-full blur-3xl will-change-transform"></div>
                 </motion.div>
             </div>
         </section>

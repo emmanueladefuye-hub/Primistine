@@ -30,7 +30,7 @@ const Header = () => {
     const isActive = (path) => location.pathname === path;
 
     return (
-        <header className="fixed w-full bg-primary/95 backdrop-blur-md border-b border-white/10 z-[100]">
+        <header className="fixed w-full bg-primary/95 lg:backdrop-blur-md border-b border-white/10 z-[100] gpu-accelerated">
             {/* Header Content Container - Controlled Layering */}
             <div className="relative z-[150] max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
                 {/* Logo */}

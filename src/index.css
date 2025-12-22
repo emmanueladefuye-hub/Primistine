@@ -6,6 +6,8 @@
   body {
     @apply bg-[#0A192F] text-slate-300 font-sans antialiased text-[15px] leading-relaxed md:text-base;
     touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
   }
 
   h1 {
@@ -41,5 +43,26 @@
   .custom-scrollbar::-webkit-scrollbar-thumb {
     background: rgba(100, 255, 218, 0.1);
     border-radius: 10px;
+  }
+
+  /* Performance Utilities */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform, opacity;
+  }
+
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  .will-change-opacity {
+    will-change: opacity;
+  }
+
+  /* Optimized Transitions */
+  .smooth-transition {
+    @apply transition-all duration-300 ease-out;
   }
 }
