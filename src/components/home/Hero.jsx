@@ -38,7 +38,7 @@ const Hero = () => {
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 pt-4 w-full sm:w-auto">
-                        <Link to="/contact-us" className="btn-primary w-full sm:w-auto py-5 sm:py-3">
+                        <Link to="/contact-us" className="btn-premium-glossy text-primary w-full sm:w-auto py-5 sm:py-3 px-8 rounded-xl font-bold flex items-center justify-center gap-2">
                             Talk to an Engineer
                             <ArrowRight className="h-5 w-5" />
                         </Link>

@@ -21,20 +21,23 @@ const CoreValues = () => {
     ];
 
     return (
-        <section className="section-padding bg-primary relative">
-            <div className="text-center max-w-2xl mx-auto mb-16">
-                <h2 className="text-3xl md:text-4xl mb-4">Why Smart Homeowners Choose Primistine</h2>
-                <p className="text-slate-400">Engineering discipline applied to every connection.</p>
+        <section className="section-padding relative overflow-hidden">
+            <div className="text-center max-w-2xl mx-auto mb-20 relative z-10">
+                <div className="flex items-center justify-center gap-3 mb-4">
+                    <div className="h-px w-8 bg-accent-teal/50"></div>
+                    <span className="text-accent-teal font-bold uppercase tracking-[0.2em] text-[10px] md:text-xs">The Primistine Edge</span>
+                </div>
+                <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-6">Why Smart Homeowners <br />Choose Us</h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
                 {values.map((val, idx) => (
-                    <div key={idx} className="bg-primary-light p-8 rounded-xl border border-white/5 hover:border-accent-teal/30 transition-all hover:-translate-y-1">
-                        <div className="w-14 h-14 bg-primary rounded-lg flex items-center justify-center mb-6 border border-white/10">
-                            <val.icon className="h-7 w-7 text-accent-teal" />
+                    <div key={idx} className="group flex flex-col p-10 rounded-[2rem] bg-[#112240]/40 border border-white/5 hover:border-accent-teal/20 transition-all duration-500 hover:bg-[#112240]/60">
+                        <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center mb-8 border border-white/10 group-hover:border-accent-teal/30 transition-all duration-500">
+                            <val.icon className="h-8 w-8 text-accent-teal group-hover:scale-110 transition-transform duration-500" />
                         </div>
-                        <h3 className="text-xl font-bold text-white mb-3">{val.title}</h3>
-                        <p className="text-slate-400 leading-relaxed text-sm">
+                        <h3 className="text-2xl font-display font-bold text-white mb-4 group-hover:text-accent-teal transition-colors duration-500">{val.title}</h3>
+                        <p className="text-slate-400 font-light leading-relaxed text-sm md:text-base">
                             {val.desc}
                         </p>
                     </div>

@@ -48,18 +48,19 @@ const Header = () => {
                 </Link>
 
                 {/* Desktop Nav */}
-                <nav className="hidden md:flex items-center gap-8">
+                <nav className="hidden md:flex items-center gap-10">
                     {navigation.map((item) => (
                         <Link
                             key={item.name}
                             to={item.href}
-                            className={`text-sm font-medium transition-colors hover:text-accent-gold ${isActive(item.href) ? 'text-accent-gold' : 'text-slate-300'
+                            className={`text-[11px] font-bold uppercase tracking-[0.2em] transition-colors relative group ${isActive(item.href) ? 'text-accent-gold' : 'text-slate-400 hover:text-white'
                                 }`}
                         >
                             {item.name}
+                            <span className={`absolute -bottom-1 left-0 h-px bg-accent-gold transition-all duration-300 ${isActive(item.href) ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                         </Link>
                     ))}
-                    <Link to="/contact-us" className="btn-primary py-2 px-5 text-sm">
+                    <Link to="/contact-us" className="btn-premium-white px-6 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-widest hover:bg-accent-gold hover:text-primary transition-all duration-300 shadow-lg active:scale-95">
                         Request Quote
                     </Link>
                 </nav>

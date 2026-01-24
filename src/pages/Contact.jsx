@@ -1,8 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, ChevronDown } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, ChevronDown, Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import { InquiryService } from '../lib/services/InquiryService';
 
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        projectType: 'Solar Installation & Renewable Energy',
+        message: ''
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitStatus(null);
+
+        try {
+            await InquiryService.trackInquiry(formData);
+            setSubmitStatus('success');
+            setFormData({
+                firstName: '',
+                lastName: '',
+                email: '',
+                projectType: 'Solar Installation & Renewable Energy',
+                message: ''
+            });
+        } catch (error) {
+            console.error("Submission error:", error);
+            setSubmitStatus('error');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -77,27 +116,102 @@ const Contact = () => {
                     {/* Contact Form */}
                     <div className="bg-primary-light p-8 rounded-xl border border-white/5">
                         <h3 className="text-xl font-bold text-white mb-6">Send us a Message</h3>
-                        <form className="space-y-6">
+                        <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                                 <div>
                                     <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">First Name</label>
-                                    <input type="text" className="w-full bg-primary border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-accent-teal transition-colors" placeholder="John" />
+                                    <input
+                                        type="text"
+                                        name="firstName"
+                                        value={formData.firstName}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full bg-primary border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-accent-teal transition-colors"
+                                        placeholder="John"
+                                    />
                                 </div>
                                 <div>
                                     <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Last Name</label>
-                                    <input type="text" className="w-full bg-primary border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-accent-teal transition-colors" placeholder="Doe" />
+                                    <input
+                                        type="text"
+                                        name="lastName"
+                                        value={formData.lastName}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full bg-primary border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-accent-teal transition-colors"
+                                        placeholder="Doe"
+                                    />
                                 </div>
                             </div>
 
-                            <div>
-                                <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Email Address</label>
-                                <input type="email" className="w-full bg-primary border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-accent-teal transition-colors" placeholder="john@example.com" />
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                                <div>
+                                    <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Email Address</label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full bg-primary border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-accent-teal transition-colors"
+                                        placeholder="john@example.com"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Direct Line</label>
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full bg-primary border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-accent-teal transition-colors"
+                                        placeholder="+234..."
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                                <div>
+                                    <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Contact Preference</label>
+                                    <div className="relative">
+                                        <select
+                                            name="contactPreference"
+                                            value={formData.contactPreference}
+                                            onChange={handleChange}
+                                            className="w-full bg-primary border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-accent-teal transition-colors appearance-none cursor-pointer"
+                                        >
+                                            <option value="Call">Phone Call</option>
+                                            <option value="WhatsApp">WhatsApp Message</option>
+                                        </select>
+                                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500">
+                                            <ChevronDown className="h-5 w-5" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Deployment Location</label>
+                                    <input
+                                        type="text"
+                                        name="location"
+                                        value={formData.location}
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full bg-primary border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-accent-teal transition-colors"
+                                        placeholder="City, State"
+                                    />
+                                </div>
                             </div>
 
                             <div>
                                 <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Project Type</label>
                                 <div className="relative">
-                                    <select className="w-full bg-primary border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-accent-teal transition-colors appearance-none cursor-pointer">
+                                    <select
+                                        name="projectType"
+                                        value={formData.projectType}
+                                        onChange={handleChange}
+                                        className="w-full bg-primary border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-accent-teal transition-colors appearance-none cursor-pointer"
+                                    >
                                         <option>Solar Installation & Renewable Energy</option>
                                         <option>House Wiring and Electrical Installations</option>
                                         <option>Industrial Electrical Installations</option>
@@ -115,12 +229,47 @@ const Contact = () => {
 
                             <div>
                                 <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Message</label>
-                                <textarea rows="4" className="w-full bg-primary border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-accent-teal transition-colors" placeholder="Tell us about your project..."></textarea>
+                                <textarea
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    required
+                                    rows="4"
+                                    className="w-full bg-primary border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-accent-teal transition-colors"
+                                    placeholder="Tell us about your project..."
+                                ></textarea>
                             </div>
 
-                            <button type="button" className="btn-primary w-full justify-center">
-                                Send Message
+                            <button
+                                type="submit"
+                                disabled={isSubmitting}
+                                className={`btn-primary w-full justify-center ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                            >
+                                {isSubmitting ? 'Sending...' : 'Send Message'}
+                                {!isSubmitting && <Send className="ml-2 h-4 w-4" />}
                             </button>
+
+                            {submitStatus === 'success' && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="flex items-center gap-3 p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-emerald-400"
+                                >
+                                    <CheckCircle2 className="h-5 w-5 shrink-0" />
+                                    <p className="text-sm font-medium">Message sent successfully! We'll get back to you soon.</p>
+                                </motion.div>
+                            )}
+
+                            {submitStatus === 'error' && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="flex items-center gap-3 p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl text-rose-400"
+                                >
+                                    <AlertCircle className="h-5 w-5 shrink-0" />
+                                    <p className="text-sm font-medium">Failed to send message. Please try again later.</p>
+                                </motion.div>
+                            )}
                         </form>
                     </div>
                 </div>
@@ -130,3 +279,4 @@ const Contact = () => {
 };
 
 export default Contact;
+
