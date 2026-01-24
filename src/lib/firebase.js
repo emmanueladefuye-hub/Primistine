@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { initializeFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyA00JTJ733VGW69zZVMp4zyxylNEG2-wJQ",
-    authDomain: "primistine-electric-crm.firebaseapp.com",
-    projectId: "primistine-electric-crm",
-    storageBucket: "primistine-electric-crm.firebasestorage.app",
-    messagingSenderId: "312402796800",
-    appId: "1:312402796800:web:ed8c51ec8ebb9dec2c93e5",
-    measurementId: "G-26R1SLVG8W"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID,
+    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
