@@ -1,0 +1,21 @@
+{
+    "name": "Primistine Electric Limited",
+    "short_name": "Primistine",
+    "description": "Premium Electrical & Solar Engineering Solutions",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#030712",
+    "theme_color": "#030712",
+    "icons": [
+        {
+            "src": "/vite.svg",
+            "sizes": "192x192",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "/vite.svg",
+            "sizes": "512x512",
+            "type": "image/svg+xml"
+        }
+    ]
+}

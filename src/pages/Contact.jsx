@@ -8,7 +8,10 @@ const Contact = () => {
         firstName: '',
         lastName: '',
         email: '',
-        projectType: 'Solar Installation & Renewable Energy',
+        phone: '',
+        contactPreference: 'Call',
+        location: '',
+        projectType: 'Solar & Inverter',
         message: ''
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -31,7 +34,10 @@ const Contact = () => {
                 firstName: '',
                 lastName: '',
                 email: '',
-                projectType: 'Solar Installation & Renewable Energy',
+                phone: '',
+                contactPreference: 'Call',
+                location: '',
+                projectType: 'Solar & Inverter',
                 message: ''
             });
         } catch (error) {
@@ -50,7 +56,8 @@ const Contact = () => {
             transition={{ duration: 0.5 }}
             className="bg-primary min-h-screen"
         >
-            <section className="py-16 md:py-24 section-padding">
+            <section className="py-8 md:py-12 section-padding">
+
                 <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
                     <h1 className="text-3xl md:text-5xl font-display font-bold text-white mb-4">Let's Discuss Your Project</h1>
                     <p className="text-base md:text-lg text-slate-400 leading-relaxed md:px-0 px-4">
@@ -212,14 +219,12 @@ const Contact = () => {
                                         onChange={handleChange}
                                         className="w-full bg-primary border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-accent-teal transition-colors appearance-none cursor-pointer"
                                     >
-                                        <option>Solar Installation & Renewable Energy</option>
-                                        <option>House Wiring and Electrical Installations</option>
-                                        <option>Industrial Electrical Installations</option>
-                                        <option>CCTV Installation and Surveillance Systems</option>
-                                        <option>Generator Changeover and Power Integration</option>
-                                        <option>Earthing and Surge Protection Systems</option>
-                                        <option>Electrical Maintenance, Audits, and Fault Troubleshooting</option>
-                                        <option>Other</option>
+                                        <option>Solar & Inverter</option>
+                                        <option>CCTV & Security</option>
+                                        <option>Electrical Wiring</option>
+                                        <option>Generator / ATS</option>
+                                        <option>Earthing & Surge</option>
+                                        <option>Industrial Safety</option>
                                     </select>
                                     <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500">
                                         <ChevronDown className="h-5 w-5" />

@@ -1,5 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { initializeFirestore } from "firebase/firestore";
+import { getAnalytics, isSupported } from "firebase/analytics";
+
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -16,4 +18,13 @@ const db = initializeFirestore(app, {
     ignoreUndefinedProperties: true,
 });
 
-export { db };
+// Initialize Analytics if supported and measurementId exists
+let analytics;
+if (firebaseConfig.measurementId) {
+    isSupported().then(yes => yes && (analytics = getAnalytics(app)));
+}
+
+export { db, analytics };
+
+
+

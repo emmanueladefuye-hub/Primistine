@@ -17,8 +17,8 @@ const Services = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
         >
-            <section className="py-16 md:py-20 bg-primary text-center">
-                <div className="section-padding pt-0">
+            <section className="py-10 md:py-12 bg-primary text-center">
+                <div className="section-padding py-0">
                     <h1 className="text-3xl md:text-6xl font-display font-bold text-white mb-6">Our Services</h1>
                     <p className="text-base md:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
                         Comprehensive electrical engineering solutions designed for longevity, safety, and efficiency.
@@ -26,8 +26,10 @@ const Services = () => {
                 </div>
             </section>
 
+
             {/* Solar */}
-            <section className="py-16 md:py-20 bg-primary-light border-y border-white/5" id="solar">
+            <section className="py-10 md:py-12 bg-primary-light border-y border-white/5" id="solar">
+
                 <div className="section-padding grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
                     <div className="order-2 lg:order-1">
                         <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center border border-white/10 mb-6">
@@ -64,7 +66,8 @@ const Services = () => {
             </section>
 
             {/* Wiring */}
-            <section className="py-16 md:py-20 bg-primary" id="wiring">
+            <section className="py-10 md:py-12 bg-primary" id="wiring">
+
                 <div className="section-padding grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
                     {/* Visual */}
                     <div className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl">
@@ -96,7 +99,7 @@ const Services = () => {
             </section>
 
             {/* CCTV */}
-            <section className="py-20 bg-primary-light border-y border-white/5" id="cctv">
+            <section className="py-12 bg-primary-light border-y border-white/5" id="cctv">
                 <div className="section-padding grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div className="order-2 lg:order-1">
                         <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center border border-white/10 mb-6">

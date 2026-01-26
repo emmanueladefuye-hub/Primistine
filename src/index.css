@@ -33,8 +33,9 @@
   }
 
   .section-padding {
-    @apply py-16 md:py-24 px-5 md:px-8 max-w-7xl mx-auto;
+    @apply py-10 md:py-16 px-5 md:px-8 max-w-7xl mx-auto;
   }
+
 
   .custom-scrollbar::-webkit-scrollbar {
     width: 4px;

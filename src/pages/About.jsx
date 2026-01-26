@@ -12,9 +12,10 @@ const About = () => {
             transition={{ duration: 0.5 }}
         >
             {/* Hero */}
-            <section className="py-16 md:py-24 bg-primary border-b border-white/5 relative overflow-hidden">
+            <section className="py-10 md:py-16 bg-primary border-b border-white/5 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-1/3 h-full bg-[#172A45]/50 skew-x-12 translate-x-20"></div>
-                <div className="section-padding relative z-10 text-center max-w-4xl mx-auto">
+                <div className="section-padding py-0 relative z-10 text-center max-w-4xl mx-auto">
+
                     <span className="text-accent-gold font-bold uppercase tracking-widest text-xs md:text-sm mb-4 block">About Primistine</span>
                     <h1 className="text-3xl md:text-6xl font-display font-bold text-white mb-6">Bringing Order to the Power Sector</h1>
                     <p className="text-base md:text-lg text-slate-400 leading-relaxed md:px-10">
@@ -24,7 +25,8 @@ const About = () => {
             </section>
 
             {/* Our Values */}
-            <section className="section-padding py-20 bg-primary-light">
+            <section className="section-padding py-8 bg-primary-light">
+
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                     <div className="space-y-4">
                         <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center border border-white/10">
@@ -57,7 +59,8 @@ const About = () => {
             </section>
 
             {/* Process */}
-            <section className="section-padding py-16 md:py-20 bg-primary">
+            <section className="section-padding py-10 md:py-12 bg-primary">
+
                 <h2 className="text-3xl font-bold text-center mb-12 md:mb-16">The Primistine Process</h2>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
                     {/* Connecting Line (Desktop) */}

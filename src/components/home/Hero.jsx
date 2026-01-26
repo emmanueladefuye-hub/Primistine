@@ -13,7 +13,8 @@ const Hero = () => {
                 <div className="absolute -top-20 -right-20 w-96 h-96 bg-accent-gold/5 blur-[100px] rounded-full"></div>
             </div>
 
-            <div className="section-padding relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-24 md:py-32">
+            <div className="section-padding relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-10 md:py-20">
+
                 {/* Text Content */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

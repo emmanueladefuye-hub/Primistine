@@ -23,7 +23,8 @@ const Home = () => {
             <CoreValues />
 
             {/* Calculators Entry Section */}
-            <section className="py-24 relative overflow-hidden border-y border-white/5">
+            <section className="py-12 md:py-16 relative overflow-hidden border-y border-white/5">
+
                 <div className="absolute inset-0 bg-[#112240]/40" />
                 <div className="max-w-7xl mx-auto px-5 relative z-10">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">

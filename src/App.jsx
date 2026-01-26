@@ -13,10 +13,12 @@ import SolarLoad from './pages/calculators/SolarLoad';
 import BudgetEstimatorPage from './pages/calculators/BudgetEstimator';
 import SafetyCheckPage from './pages/calculators/SafetyCheck';
 import ScrollToTop from './components/ScrollToTop';
+import NotFound from './pages/NotFound';
+import ErrorBoundary from './components/ErrorBoundary';
 
 function App() {
   return (
-    <>
+    <ErrorBoundary>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -35,9 +37,12 @@ function App() {
             <Route path="budget" element={<BudgetEstimatorPage />} />
             <Route path="safety" element={<SafetyCheckPage />} />
           </Route>
+
+          {/* 404 Route */}
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
-    </>
+    </ErrorBoundary>
   );
 }
 

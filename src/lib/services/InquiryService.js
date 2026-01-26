@@ -7,17 +7,18 @@ export const InquiryService = {
      * @param {Object} inquiryData - { firstName, lastName, email, projectType, message }
      */
     trackInquiry: async (inquiryData) => {
+        console.log("Inquiry data received by service:", inquiryData);
         try {
             const inquiriesRef = collection(db, "inquiries");
 
             const newInquiry = {
-                name: `${inquiryData.firstName} ${inquiryData.lastName}`.trim(),
-                email: inquiryData.email,
-                phone: inquiryData.phone || "",
-                contactPreference: inquiryData.contactPreference || "Call",
-                location: inquiryData.location || "",
-                message: inquiryData.message,
-                serviceInterest: [inquiryData.projectType],
+                name: `${inquiryData.firstName || ''} ${inquiryData.lastName || ''}`.trim(),
+                email: inquiryData.email || "",
+                phone: inquiryData.phone || inquiryData.phoneNumber || inquiryData.directLine || inquiryData.direct_line || "",
+                contactPreference: inquiryData.contactPreference || inquiryData.preference || "Call",
+                location: inquiryData.location || inquiryData.deploymentLocation || "",
+                message: inquiryData.message || inquiryData.comment || "",
+                serviceInterest: [inquiryData.projectType || inquiryData.service || "General Inquiry"],
                 status: "raw",
                 timestamp: serverTimestamp(),
                 source: "Website Form",
