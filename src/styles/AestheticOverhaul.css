@@ -1,0 +1,92 @@
+/* 
+  Primistine Electric - Premium Aesthetic Overhaul
+  Defining modern design tokens, glassmorphism utilities, and micro-animations.
+*/
+
+:root {
+    --premium-glass-bg: rgba(10, 25, 47, 0.7);
+    --premium-glass-border: rgba(255, 255, 255, 0.15);
+    --premium-accent-gradient: linear-gradient(135deg, #FFD700 0%, #FDB931 100%);
+    --premium-dark-gradient: linear-gradient(180deg, #0A192F 0%, #020C1B 100%);
+    --premium-blur: blur(30px);
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+    background: var(--premium-glass-bg);
+    backdrop-filter: var(--premium-blur);
+    -webkit-backdrop-filter: var(--premium-blur);
+    border: 1px solid var(--premium-glass-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-panel-light {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Micro-animations */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-premium-in {
+    animation: fadeInSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hover-magnetic {
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hover-magnetic:hover {
+    transform: scale(1.02) translateY(-4px);
+}
+
+/* Video Background Layer */
+.video-bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.video-bg-container video {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    opacity: 0.4;
+    /* Subtle background presence */
+}
+
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 0%, #0A192F 100%);
+    z-index: 1;
+}
+
+/* Typography Enhancements */
+.text-premium-display {
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    font-weight: 800;
+}
+
+.gradient-text {
+    background: var(--premium-accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

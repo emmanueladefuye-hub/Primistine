@@ -33,7 +33,7 @@ const CalculatorIndex = () => {
 
     return (
         <div className="bg-primary min-h-screen pt-32 pb-24">
-            <div className="max-w-7xl mx-auto px-4">
+            <div className="max-w-[1440px] mx-auto px-5 md:px-10">
                 <div className="text-center max-w-3xl mx-auto mb-20">
                     <span className="text-accent-gold font-bold uppercase tracking-[0.2em] text-sm mb-4 block">Smart Planning Tools</span>
                     <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6">Decision Calculators</h1>

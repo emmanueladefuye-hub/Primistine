@@ -4,7 +4,7 @@ import SolarLoadCalculator from '../../components/calculators/SolarLoadCalculato
 const SolarLoadPage = () => {
     return (
         <div className="bg-primary min-h-screen pt-32 pb-24">
-            <div className="max-w-5xl mx-auto px-4">
+            <div className="max-w-[1440px] mx-auto px-5 md:px-10">
                 <div className="mb-16">
                     <span className="text-accent-gold font-bold uppercase tracking-widest text-xs mb-3 block">Solar Engineering Tool</span>
                     <h1 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">Load Audit Calculator</h1>

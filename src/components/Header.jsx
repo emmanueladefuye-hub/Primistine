@@ -9,13 +9,20 @@ const Header = () => {
     const location = useLocation();
 
     // Prevent scrolling when menu is open
+    // Prevent scrolling when menu is open and compensate for scrollbar width to prevent layout shift
     useEffect(() => {
         if (isOpen) {
+            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
             document.body.style.overflow = 'hidden';
+            document.body.style.paddingRight = `${scrollbarWidth}px`;
         } else {
             document.body.style.overflow = 'unset';
+            document.body.style.paddingRight = '0px';
         }
-        return () => { document.body.style.overflow = 'unset'; };
+        return () => {
+            document.body.style.overflow = 'unset';
+            document.body.style.paddingRight = '0px';
+        };
     }, [isOpen]);
 
     const navigation = [
@@ -31,9 +38,9 @@ const Header = () => {
     const isActive = (path) => location.pathname === path;
 
     return (
-        <header className="fixed w-full bg-primary/95 lg:backdrop-blur-md border-b border-white/10 z-[100] gpu-accelerated">
+        <header className="fixed w-full bg-primary/95 lg:backdrop-blur-md border-b border-white/20 z-[100] gpu-accelerated">
             {/* Header Content Container - Controlled Layering */}
-            <div className="relative z-[150] max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
+            <div className="relative z-[150] max-w-[1440px] mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
                 {/* Logo */}
                 <Link to="/" className="flex items-center gap-3 group relative h-12 md:h-14">
                     <img
@@ -102,43 +109,43 @@ const Header = () => {
                             animate={{ x: 0 }}
                             exit={{ x: '100%' }}
                             transition={{ type: 'tween', duration: 0.3 }}
-                            className="fixed top-0 right-0 h-screen w-full sm:w-[85%] max-w-sm bg-[#050C1A] border-l border-white/10 z-[140] shadow-2xl flex flex-col pt-24"
+                            className="fixed top-0 right-0 h-screen w-full sm:w-[85%] max-w-sm bg-[#050C1A] z-[140] shadow-2xl flex flex-col pt-24"
                         >
-                            <div className="flex-1 overflow-y-auto px-8 pb-8">
-                                <p className="text-[10px] font-bold text-accent-teal uppercase tracking-[0.2em] mb-8">Navigation Hub</p>
+                            <div className="flex-1 overflow-y-auto px-8 pb-8 custom-scrollbar">
+                                <p className="text-[12px] font-bold text-accent-teal uppercase tracking-[0.2em] mb-8">Navigation Hub</p>
 
                                 <nav className="flex flex-col">
-                                    <Link to="/" onClick={() => setIsOpen(false)} className={`flex items-center justify-between py-5 text-xl font-display font-bold border-b border-white/5 transition-colors ${isActive('/') ? 'text-[#FFD700]' : 'text-white'}`}>
+                                    <Link to="/" onClick={() => setIsOpen(false)} aria-label="Navigate to Home" className={`flex items-center justify-between py-5 text-xl font-display font-bold transition-colors ${isActive('/') ? 'text-[#FFD700]' : 'text-white'}`}>
                                         Home <ArrowRight className="h-5 w-5 opacity-30" />
                                     </Link>
-                                    <Link to="/about" onClick={() => setIsOpen(false)} className={`flex items-center justify-between py-5 text-xl font-display font-bold border-b border-white/5 transition-colors ${isActive('/about') ? 'text-[#FFD700]' : 'text-white'}`}>
+                                    <Link to="/about" onClick={() => setIsOpen(false)} aria-label="Navigate to About Us" className={`flex items-center justify-between py-5 text-xl font-display font-bold transition-colors ${isActive('/about') ? 'text-[#FFD700]' : 'text-white'}`}>
                                         About <ArrowRight className="h-5 w-5 opacity-30" />
                                     </Link>
-                                    <Link to="/services" onClick={() => setIsOpen(false)} className={`flex items-center justify-between py-5 text-xl font-display font-bold border-b border-white/5 transition-colors ${isActive('/services') ? 'text-[#FFD700]' : 'text-white'}`}>
+                                    <Link to="/services" onClick={() => setIsOpen(false)} aria-label="Our Services" className={`flex items-center justify-between py-5 text-xl font-display font-bold transition-colors ${isActive('/services') ? 'text-[#FFD700]' : 'text-white'}`}>
                                         Services <ArrowRight className="h-5 w-5 opacity-30" />
                                     </Link>
-                                    <Link to="/projects" onClick={() => setIsOpen(false)} className={`flex items-center justify-between py-5 text-xl font-display font-bold border-b border-white/5 transition-colors ${isActive('/projects') ? 'text-[#FFD700]' : 'text-white'}`}>
+                                    <Link to="/projects" onClick={() => setIsOpen(false)} aria-label="Our Projects" className={`flex items-center justify-between py-5 text-xl font-display font-bold transition-colors ${isActive('/projects') ? 'text-[#FFD700]' : 'text-white'}`}>
                                         Projects <ArrowRight className="h-5 w-5 opacity-30" />
                                     </Link>
-                                    <Link to="/calculators" onClick={() => setIsOpen(false)} className={`flex items-center justify-between py-5 text-xl font-display font-bold border-b border-white/5 transition-colors ${isActive('/calculators') ? 'text-[#FFD700]' : 'text-white'}`}>
+                                    <Link to="/calculators" onClick={() => setIsOpen(false)} aria-label="Engineering Calculators" className={`flex items-center justify-between py-5 text-xl font-display font-bold transition-colors ${isActive('/calculators') ? 'text-[#FFD700]' : 'text-white'}`}>
                                         Calculators <ArrowRight className="h-5 w-5 opacity-30" />
                                     </Link>
-                                    <Link to="/blog" onClick={() => setIsOpen(false)} className={`flex items-center justify-between py-5 text-xl font-display font-bold border-b border-white/5 transition-colors ${isActive('/blog') ? 'text-[#FFD700]' : 'text-white'}`}>
+                                    <Link to="/blog" onClick={() => setIsOpen(false)} aria-label="Knowledge Hub Blog" className={`flex items-center justify-between py-5 text-xl font-display font-bold transition-colors ${isActive('/blog') ? 'text-[#FFD700]' : 'text-white'}`}>
                                         Blog <ArrowRight className="h-5 w-5 opacity-30" />
                                     </Link>
-                                    <Link to="/contact-us" onClick={() => setIsOpen(false)} className={`flex items-center justify-between py-5 text-xl font-display font-bold border-b border-white/5 transition-colors ${isActive('/contact-us') ? 'text-[#FFD700]' : 'text-white'}`}>
+                                    <Link to="/contact-us" onClick={() => setIsOpen(false)} aria-label="Contact Us" className={`flex items-center justify-between py-5 text-xl font-display font-bold transition-colors ${isActive('/contact-us') ? 'text-[#FFD700]' : 'text-white'}`}>
                                         Contact <ArrowRight className="h-5 w-5 opacity-30" />
                                     </Link>
                                 </nav>
 
-                                <div className="mt-12 space-y-6 opacity-60">
+                                <div className="mt-12 space-y-6 opacity-90">
                                     <div className="flex items-center gap-3 text-slate-300">
                                         <Phone className="h-4 w-4 text-[#FFD700]" />
-                                        <span className="text-sm">+234 123 456 7890</span>
+                                        <span className="text-sm font-medium">+234 123 456 7890</span>
                                     </div>
                                     <div className="flex items-center gap-3 text-slate-300">
                                         <Mail className="h-4 w-4 text-accent-teal" />
-                                        <span className="text-sm">engineering@primistine.com</span>
+                                        <span className="text-sm font-medium">engineering@primistine.com</span>
                                     </div>
                                 </div>
                             </div>

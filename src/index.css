@@ -33,7 +33,7 @@
   }
 
   .section-padding {
-    @apply py-10 md:py-16 px-5 md:px-8 max-w-7xl mx-auto;
+    @apply py-10 md:py-16 px-5 md:px-10 lg:px-12 max-w-[1440px] mx-auto;
   }
 
 
@@ -222,6 +222,6 @@
   }
 
   .glass-card {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl rounded-[2rem];
+    @apply bg-white/5 backdrop-blur-lg border border-white/10 shadow-2xl rounded-[2rem];
   }
 }

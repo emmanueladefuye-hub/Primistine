@@ -36,8 +36,8 @@ const SafetyCheck = () => {
                                 key={type}
                                 onClick={() => setApartmentType(type)}
                                 className={`p-4 rounded-xl border text-xs font-bold uppercase tracking-widest transition-all ${apartmentType === type
-                                        ? "bg-accent-teal/10 border-accent-teal text-white"
-                                        : "bg-primary-light border-white/5 text-slate-500 hover:border-white/20"
+                                    ? "bg-accent-teal/10 border-accent-teal text-white"
+                                    : "bg-primary-light border-white/5 text-slate-500 hover:border-white/20"
                                     }`}
                             >
                                 {type.replace('-', ' ')}
@@ -57,8 +57,8 @@ const SafetyCheck = () => {
                                     key={opt}
                                     onClick={() => setFrequentTrips(opt)}
                                     className={`flex-1 py-3 rounded-lg border text-sm font-bold uppercase transition-all ${frequentTrips === opt
-                                            ? "bg-white text-primary border-white"
-                                            : "bg-transparent text-slate-500 border-white/10"
+                                        ? "bg-white text-primary border-white"
+                                        : "bg-transparent text-slate-500 border-white/10"
                                         }`}
                                 >
                                     {opt}
@@ -68,7 +68,7 @@ const SafetyCheck = () => {
                     </div>
                 </div>
 
-                <div className="space-y-8">
+                <div className="space-y-8 lg:sticky lg:top-32 h-fit">
                     <h3 className="text-xl font-display font-bold text-white flex items-center gap-2">
                         <Zap className="h-5 w-5 text-accent-teal" />
                         3. Major Concurrent Loads
@@ -79,8 +79,8 @@ const SafetyCheck = () => {
                                 key={app.id}
                                 onClick={() => toggleAppliance(app.id)}
                                 className={`flex items-center justify-between p-4 rounded-xl border transition-all ${selectedAppliances.includes(app.id)
-                                        ? "bg-accent-teal/5 border-accent-teal/50 text-white"
-                                        : "bg-primary-light border-white/5 text-slate-400 hover:border-white/20"
+                                    ? "bg-accent-teal/5 border-accent-teal/50 text-white"
+                                    : "bg-primary-light border-white/5 text-slate-400 hover:border-white/20"
                                     }`}
                             >
                                 <span className="text-xs font-bold uppercase tracking-wider">{app.name}</span>
@@ -95,21 +95,24 @@ const SafetyCheck = () => {
                 </div>
             </div>
 
-            <CalculatorResult
-                title="Safety Assessment Report"
-                results={[
-                    { label: "Stress Index", value: assessment.level },
-                    { label: "Risk Status", value: assessment.level === 'High' ? 'Critical' : 'Stable' },
-                    { label: "Property Type", value: apartmentType.toUpperCase() },
-                    { label: "Action Priority", value: assessment.level === 'High' ? 'Urgent' : 'Routine' }
-                ]}
-                advice={
-                    assessment.level === 'High'
-                        ? "Warning: Your current appliance load is likely straining your old or undersized wiring. This significantly increases fire risk and equipment failure. A professional audit is mandatory."
-                        : "Your wiring appears to be handling current loads well, but age and hidden joint failures can still be dangerous. Regular 2-year inspections are recommended."
-                }
-                ctaLabel="Request Safety Audit"
-            />
+            {/* Results Section - Now Wide and decoupled from sticky column */}
+            <div className="pt-12 border-t border-white/5">
+                <CalculatorResult
+                    title="Safety Diagnosis"
+                    results={[
+                        { label: "Stress Index", value: assessment.level },
+                        { label: "Risk Status", value: assessment.level === 'High' ? 'Critical' : 'Stable' },
+                        { label: "Property Info", value: apartmentType.toUpperCase() },
+                        { label: "Action Priority", value: assessment.level === 'High' ? 'Urgent' : 'Routine' }
+                    ]}
+                    advice={
+                        assessment.level === 'High'
+                            ? "Warning: Your current appliance load is likely straining your old or undersized wiring. This significantly increases fire risk and equipment failure. A professional audit is mandatory."
+                            : "Your wiring appears to be handling current loads well, but age and hidden joint failures can still be dangerous. Regular 2-year inspections are recommended."
+                    }
+                    ctaLabel="Request Safety Audit"
+                />
+            </div>
         </div>
     );
 };

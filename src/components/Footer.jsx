@@ -5,7 +5,7 @@ import logoImg from '../assets/images/official_logo.png';
 
 const Footer = () => {
     return (
-        <footer className="bg-primary-light border-t border-white/10 pt-16 pb-8">
+        <footer className="bg-[#050C1A] pt-16 pb-8">
             <div className="section-padding py-0 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 {/* Brand */}
                 <div className="col-span-1 md:col-span-1">
@@ -80,7 +80,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="section-padding py-0 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+            <div className="section-padding py-0 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
                 <p>&copy; {new Date().getFullYear()} Primistine Electric Ltd. All rights reserved.</p>
                 <p>Engineered for Safety.</p>
             </div>

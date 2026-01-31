@@ -1,228 +1,154 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sun, Zap, Activity, Shield, RotateCcw, Umbrella, ArrowRight } from 'lucide-react';
+import { Sun, Zap, Activity, Shield, RotateCcw, Umbrella, ArrowRight, Cpu, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CTASection from '../components/home/CTASection';
 
-import solarImg from '../assets/images/solar_roof.png';
-import wiringImg from '../assets/images/neat_wiring.png';
-import auditImg from '../assets/images/engineer_audit.png';
-import boardImg from '../assets/images/clean_distribution_board.png';
+import solarImg from '../assets/media/images/solar-panel-array.jpg';
+import wiringImg from '../assets/media/images/wiring-panel.jpg';
+import auditImg from '../assets/media/images/team-collaboration.jpg';
+import factoryImg from '../assets/media/images/team-factory.jpg';
+import pylonImg from '../assets/media/images/high-voltage-pylon.jpg';
 
 const Services = () => {
+    const servicesList = [
+        {
+            id: "solar",
+            icon: Sun,
+            title: "Solar & Energy Storage",
+            subtitle: "Reliable Backup Power.",
+            desc: "Stop replacing batteries every year. We design solar systems correctly from the start, ensuring you have steady power when you need it most.",
+            features: ['Inverter Installations', 'Lithium Battery Upgrades', 'Solar Panel Mounting', 'Backup Power Design'],
+            image: solarImg,
+            accent: "accent-gold",
+            calculator: true
+        },
+        {
+            id: "wiring",
+            icon: Zap,
+            title: "Full Building Wiring",
+            subtitle: "Done Once, Done Right.",
+            desc: "Professional wiring for homes and offices. We ensure every cable is safe, organized, and properly connected to prevent future faults.",
+            features: ['House & Office Wiring', 'Distribution Board Setup', 'Smart Home Systems', 'Building Rewiring'],
+            image: wiringImg,
+            accent: "accent-teal"
+        },
+        {
+            id: "audits",
+            icon: Activity,
+            title: "Safety Audits",
+            subtitle: "Protect Your Property.",
+            desc: "Is your wiring safe? We conduct thorough safety checks to find hidden faults, earthing issues, and fire risks before they become problems.",
+            features: ['Safety System Checks', 'Earthing Protection', 'Load Analysis', 'Electrical Troubleshooting'],
+            image: auditImg,
+            accent: "red-400"
+        },
+        {
+            id: "industrial",
+            icon: Cpu,
+            title: "Industrial Support",
+            subtitle: "Steady Commercial Power.",
+            desc: "We provide professional electrical support for warehouses and factories, including automatic changeover switches for seamless power transition.",
+            features: ['Automatic Changeovers (ATS)', 'Inverter/Gen Sync', 'Control Panel Setup', 'Industrial Wiring'],
+            image: factoryImg,
+            accent: "accent-gold"
+        }
+    ];
+
     return (
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8 }}
+            className="bg-[#020C1B]"
         >
-            <section className="py-10 md:py-12 bg-primary text-center">
-                <div className="section-padding py-0">
-                    <h1 className="text-3xl md:text-6xl font-display font-bold text-white mb-6">Our Services</h1>
-                    <p className="text-base md:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                        Comprehensive electrical engineering solutions designed for longevity, safety, and efficiency.
-                    </p>
-                </div>
-            </section>
-
-
-            {/* Solar */}
-            <section className="py-10 md:py-12 bg-primary-light border-y border-white/5" id="solar">
-
-                <div className="section-padding grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
-                    <div className="order-2 lg:order-1">
-                        <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center border border-white/10 mb-6">
-                            <Sun className="text-accent-gold h-6 w-6" />
-                        </div>
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Solar Installation Services</h2>
-                        <h3 className="text-xl text-accent-teal mb-6">Energy Independence, Engineered.</h3>
-                        <p className="text-slate-400 leading-relaxed mb-6">
-                            A solar system is only as good as its design. We analyze your true energy profile to spec the right inverter, battery bank, and array. Don't waste money on undersized systems that fail.
+            {/* Page Hero */}
+            <section className="relative pt-12 md:pt-20 pb-12 md:pb-16 overflow-hidden bg-[#0A192F]">
+                <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: `url(${pylonImg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+                <div className="section-padding relative z-10 text-center max-w-5xl mx-auto">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1 }}
+                    >
+                        <span className="text-accent-gold font-bold uppercase tracking-[0.4em] text-xs mb-6 block">Our Expertise</span>
+                        <h1 className="text-5xl md:text-8xl font-display font-bold text-white mb-10 leading-[1.1]">Professional <br /><span className="gradient-text">Services</span></h1>
+                        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed max-w-3xl mx-auto font-light opacity-80">
+                            We provide high-quality electrical solutions for residential and commercial properties. From solar systems to building wiring, we focus on safety and reliability.
                         </p>
-                        <ul className="space-y-3 mb-8">
-                            {['Hybrid Inverter Setups', 'Lithium-Ion Battery Integration', 'Roof & Ground Mounts', 'Industrial Power Backup'].map(item => (
-                                <li key={item} className="flex items-center gap-2 text-slate-300">
-                                    <span className="h-1.5 w-1.5 rounded-full bg-accent-gold"></span>
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
-                        <div className="flex flex-wrap gap-4">
-                            <Link to="/contact-us" className="btn-primary">
-                                Get a Solar Assessment
-                            </Link>
-                            <Link to="/calculators/solar-load" className="px-8 py-3 rounded-md font-bold text-white border border-white/10 hover:border-accent-teal transition-all flex items-center gap-2">
-                                <Zap className="h-4 w-4 text-accent-gold" />
-                                Use Solar Calculator
-                            </Link>
-                        </div>
-                    </div>
-                    {/* Visual */}
-                    <div className="order-1 lg:order-2 rounded-2xl overflow-hidden border border-white/5 shadow-2xl">
-                        <img src={solarImg} alt="Solar Installation" className="w-full h-auto object-cover aspect-video" />
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
-            {/* Wiring */}
-            <section className="py-10 md:py-12 bg-primary" id="wiring">
+            {/* Services Sections */}
+            {servicesList.map((svc, idx) => (
+                <section key={svc.id} className={`py-32 relative overflow-hidden ${idx % 2 === 0 ? 'bg-[#020C1B]' : 'bg-[#0A192F]'}`} id={svc.id}>
+                    <div className="max-w-[1440px] mx-auto px-5 md:px-10 section-padding grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                        <motion.div
+                            initial={{ opacity: 0, x: idx % 2 === 0 ? -40 : 40 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className={idx % 2 === 0 ? 'order-2 lg:order-1' : 'order-2'}
+                        >
+                            <div className={`w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10 group-hover:border-${svc.accent}/50 transition-all shadow-xl`}>
+                                <svc.icon className={`h-8 w-8 text-${svc.accent === 'accent-teal' ? 'accent-teal' : svc.accent === 'red-400' ? 'red-400' : 'accent-gold'}`} />
+                            </div>
+                            <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-4">{svc.title}</h2>
+                            <h3 className={`text-xl font-bold mb-8 uppercase tracking-widest text-${svc.accent === 'accent-teal' ? 'accent-teal' : svc.accent === 'red-400' ? 'red-400' : 'accent-gold'}`}>{svc.subtitle}</h3>
+                            <p className="text-slate-300 text-lg leading-relaxed mb-10 font-light opacity-90">
+                                {svc.desc}
+                            </p>
 
-                <div className="section-padding grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
-                    {/* Visual */}
-                    <div className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl">
-                        <img src={wiringImg} alt="Premium Wiring" className="w-full h-auto object-cover aspect-video" />
-                    </div>
+                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+                                {svc.features.map(feature => (
+                                    <li key={feature} className="flex items-center gap-3 text-slate-400 text-sm">
+                                        <div className={`h-1.5 w-1.5 rounded-full bg-${svc.accent === 'accent-teal' ? 'accent-teal' : svc.accent === 'red-400' ? 'red-400' : 'accent-gold'}`}></div>
+                                        {feature}
+                                    </li>
+                                ))}
+                            </ul>
 
-                    <div>
-                        <div className="w-12 h-12 bg-primary-light rounded-lg flex items-center justify-center border border-white/10 mb-6">
-                            <Zap className="text-accent-teal h-6 w-6" />
-                        </div>
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Premium Electrical Installations</h2>
-                        <h3 className="text-xl text-accent-teal mb-6">Wiring Done Correctly.</h3>
-                        <p className="text-slate-400 leading-relaxed mb-6">
-                            From luxury residences to automated office blocks, we provide structured cabling that is neat, labeled, and safe. We fix the mess behind the walls so you sleep soundly.
-                        </p>
-                        <ul className="space-y-3 mb-8">
-                            {['Conduit Surface/Concealed Wiring', '3-Phase Distribution Boards', 'Smart Home Integration', 'Full Building Rewiring'].map(item => (
-                                <li key={item} className="flex items-center gap-2 text-slate-300">
-                                    <span className="h-1.5 w-1.5 rounded-full bg-accent-teal"></span>
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
-                        <Link to="/contact-us" className="btn-secondary">
-                            Request Installation Quote
-                        </Link>
-                    </div>
-                </div>
-            </section>
+                            <div className="flex flex-wrap gap-6">
+                                <Link to="/contact-us" className="btn-premium-gloss px-10 py-5 rounded-2xl font-bold bg-white text-[#020C1B] hover:bg-accent-gold transition-all active:scale-95 shadow-xl uppercase tracking-widest text-xs">
+                                    Get Started
+                                </Link>
+                                {svc.calculator && (
+                                    <Link to="/calculators/solar-load" className="glass-panel-light px-10 py-5 rounded-2xl font-bold text-accent-gold border border-accent-gold/30 hover:bg-accent-gold/10 transition-all flex items-center gap-3 uppercase tracking-widest text-xs">
+                                        <Zap className="h-4 w-4" /> Run Solar Calculator
+                                    </Link>
+                                )}
+                            </div>
+                        </motion.div>
 
-            {/* CCTV */}
-            <section className="py-12 bg-primary-light border-y border-white/5" id="cctv">
-                <div className="section-padding grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    <div className="order-2 lg:order-1">
-                        <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center border border-white/10 mb-6">
-                            <Shield className="text-accent-teal h-6 w-6" />
-                        </div>
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">CCTV Installation & Surveillance</h2>
-                        <h3 className="text-xl text-accent-teal mb-6">Eyes Everywhere, Always.</h3>
-                        <p className="text-slate-400 leading-relaxed mb-6">
-                            Protect your assets with high-definition surveillance systems. We design integrated security networks that provide remote viewing and AI-driven motion detection.
-                        </p>
-                        <ul className="space-y-3 mb-8">
-                            {['IP & Analog Camera Systems', 'NVR/DVR Remote Access', 'Motion Detection Alerts', 'Perimeter Security Integration'].map(item => (
-                                <li key={item} className="flex items-center gap-2 text-slate-300">
-                                    <span className="h-1.5 w-1.5 rounded-full bg-accent-teal"></span>
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
-                        <Link to="/contact-us" className="btn-secondary">
-                            Explore Security Solutions
-                        </Link>
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1 }}
+                            className={`relative ${idx % 2 === 0 ? 'order-1 lg:order-2' : 'order-1'}`}
+                        >
+                            <div className="rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.5)] bg-[#020C1B] p-4 group">
+                                <img
+                                    src={svc.image}
+                                    alt={svc.title}
+                                    className="w-full h-auto rounded-[3rem] grayscale hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#020C1B]/80 via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity" />
+                            </div>
+                            {/* Technical Overlay */}
+                            <div className="absolute -bottom-8 -right-8 glass-panel p-8 rounded-3xl border border-white/10 shadow-2xl max-w-[280px] hidden md:block animate-premium-in">
+                                <div className="flex items-center gap-3 mb-3">
+                                    <ShieldCheck className="h-5 w-5 text-accent-gold" />
+                                    <p className="text-white font-mono text-xs uppercase tracking-widest">Quality Standards</p>
+                                </div>
+                                <p className="text-slate-400 text-xs font-mono leading-relaxed">International Standards Compliant<br />High-Quality Materials Only.</p>
+                            </div>
+                        </motion.div>
                     </div>
-                    {/* Visual */}
-                    <div className="order-1 lg:order-2 rounded-2xl overflow-hidden border border-white/5 shadow-2xl">
-                        <img src={wiringImg} alt="Surveillance Engineering" className="w-full h-auto object-cover aspect-video" />
-                    </div>
-                </div>
-            </section>
-
-            {/* Generator */}
-            <section className="py-20 bg-primary" id="generator">
-                <div className="section-padding grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    {/* Visual */}
-                    <div className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl">
-                        <img src={boardImg} alt="Power Integration" className="w-full h-auto object-cover aspect-video" />
-                    </div>
-
-                    <div>
-                        <div className="w-12 h-12 bg-primary-light rounded-lg flex items-center justify-center border border-white/10 mb-6">
-                            <RotateCcw className="text-white h-6 w-6" />
-                        </div>
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Generator Changeover & Integration</h2>
-                        <h3 className="text-xl text-accent-teal mb-6">Seamless Transitions.</h3>
-                        <p className="text-slate-400 leading-relaxed mb-6">
-                            Stop manually switching breakers. We install reliable automatic changeover panels (ATS) and power integration systems that manage load transfers safely.
-                        </p>
-                        <ul className="space-y-3 mb-8">
-                            {['Automatic Transfer Switches (ATS)', 'Manual Changeover Panels', 'Inverter/Gen Synergy', 'Load Management Controls'].map(item => (
-                                <li key={item} className="flex items-center gap-2 text-slate-300">
-                                    <span className="h-1.5 w-1.5 rounded-full bg-white"></span>
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
-                        <Link to="/contact-us" className="btn-secondary">
-                            Request Integration Quote
-                        </Link>
-                    </div>
-                </div>
-            </section>
-
-            {/* Audits */}
-            <section className="py-20 bg-primary-light border-y border-white/5" id="audits">
-                <div className="section-padding grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    <div className="order-2 lg:order-1">
-                        <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center border border-white/10 mb-6">
-                            <Activity className="text-red-400 h-6 w-6" />
-                        </div>
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Industrial & Safety Audits</h2>
-                        <h3 className="text-xl text-accent-teal mb-6">Protecting Your Assets.</h3>
-                        <p className="text-slate-400 leading-relaxed mb-6">
-                            Electrical fires and equipment damage are preventable. Our comprehensive audits identify Earthing faults, overload risks, and outdated breakers before they cause disaster.
-                        </p>
-                        <ul className="space-y-3 mb-8">
-                            {['Comprehensive Safety Audits', 'Earthing & Lightning Protection', 'Load Analysis', 'Fault Troubleshooting'].map(item => (
-                                <li key={item} className="flex items-center gap-2 text-slate-300">
-                                    <span className="h-1.5 w-1.5 rounded-full bg-red-400"></span>
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
-                        <Link to="/contact-us" className="btn-secondary hover:border-red-400 hover:text-red-400">
-                            Schedule a Safety Audit
-                        </Link>
-                    </div>
-                    {/* Visual */}
-                    <div className="order-1 lg:order-2 rounded-2xl overflow-hidden border border-white/5 shadow-2xl">
-                        <img src={auditImg} alt="Engineering Audit" className="w-full h-auto object-cover aspect-video" />
-                    </div>
-                </div>
-            </section>
-
-            {/* Earthing */}
-            <section className="py-20 bg-primary" id="earthing">
-                <div className="section-padding grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    {/* Visual */}
-                    <div className="rounded-2xl overflow-hidden border border-white/5 shadow-2xl">
-                        <img src={auditImg} alt="Earthing & Protection" className="w-full h-auto object-cover aspect-video" />
-                    </div>
-
-                    <div>
-                        <div className="w-12 h-12 bg-primary-light rounded-lg flex items-center justify-center border border-white/10 mb-6">
-                            <Umbrella className="text-accent-gold h-6 w-6" />
-                        </div>
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Earthing & Surge Protection</h2>
-                        <h3 className="text-xl text-accent-teal mb-6">Zero Impact, Zero Fear.</h3>
-                        <p className="text-slate-400 leading-relaxed mb-6">
-                            High-voltage surges and lightning strikes can destroy your equipment in milliseconds. Our engineered earthing systems provide a low-resistance path to safety.
-                        </p>
-                        <ul className="space-y-3 mb-8">
-                            {['Copper Earth Pit Construction', 'Surge Protective Devices (SPDs)', 'Lightning Arrestors', 'Resistance Testing & Certification'].map(item => (
-                                <li key={item} className="flex items-center gap-2 text-slate-300">
-                                    <span className="h-1.5 w-1.5 rounded-full bg-accent-gold"></span>
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
-                        <Link to="/contact-us" className="btn-secondary">
-                            Get Protection Quote
-                        </Link>
-                    </div>
-                </div>
-            </section>
+                </section>
+            ))}
 
             <CTASection />
         </motion.div>

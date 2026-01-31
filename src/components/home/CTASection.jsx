@@ -3,35 +3,37 @@ import { Link } from 'react-router-dom';
 
 const CTASection = () => {
     return (
-        <section className="section-padding py-32 relative overflow-hidden border-t border-white/5">
-            {/* Minimal Decorative Light */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent-gold/5 blur-[150px] rounded-full pointer-events-none animate-pulse"></div>
+        <section className="section-padding py-32 relative overflow-hidden bg-[#0A192F]">
+            {/* High-Impact Ambient Light */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-accent-gold/10 blur-[200px] rounded-full pointer-events-none animate-pulse"></div>
 
-            <div className="relative z-10 text-center max-w-4xl mx-auto p-12 md:p-24 rounded-[3rem] bg-[#112240]/40 border border-white/10 shadow-2xl">
-                <div className="flex flex-col items-center mb-10">
-                    <div className="h-px w-12 bg-accent-gold/50 mb-6"></div>
-                    <span className="text-accent-gold font-bold uppercase tracking-[0.3em] text-[10px] md:text-sm">Engineering Consulting</span>
-                    <h2 className="text-4xl md:text-7xl font-display font-bold mt-6 text-white leading-[1.1]">Ready to Upgrade <br />Your Standard?</h2>
+            <div className="relative z-10 text-center max-w-5xl mx-auto p-12 md:p-24 rounded-[4rem] glass-panel border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.5)]">
+                <div className="flex flex-col items-center mb-12">
+                    <div className="h-px w-16 bg-accent-gold/50 mb-8"></div>
+                    <span className="text-accent-gold font-bold uppercase tracking-[0.4em] text-[10px] md:text-sm">Expert Engineering Consultation</span>
+                    <h2 className="text-5xl md:text-8xl font-display font-extrabold mt-8 text-white leading-[1.05] tracking-tight">Ready to Secure <br /><span className="gradient-text">Your Power?</span></h2>
                 </div>
 
-                <p className="text-lg md:text-xl text-slate-400 mb-12 leading-relaxed font-light max-w-2xl mx-auto">
-                    Don’t leave your power to chance with <span className="text-white/80">guesswork</span>. Speak with a Primistine engineer today and get a system designed for longevity.
+                <p className="text-xl md:text-2xl text-slate-300 mb-14 leading-relaxed font-light max-w-3xl mx-auto opacity-90">
+                    Don’t leave your safety to chance. Speak with a Primistine engineer today and get a system designed for <span className="text-white font-semibold">stability</span> and <span className="text-white font-semibold">peace of mind</span>.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                    <Link to="/contact-us" className="btn-premium-white px-10 py-5 rounded-full font-bold hover:bg-accent-gold transition-all duration-500 shadow-xl active:scale-95 group flex items-center gap-3 text-sm uppercase tracking-widest">
+                <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
+                    <Link to="/contact-us" className="btn-premium-glossy px-12 py-6 rounded-2xl font-bold text-lg shadow-2xl active:scale-95 group flex items-center gap-4 transition-all">
                         Get Started
-                        <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                        <ArrowRight className="h-6 w-6 transition-transform group-hover:translate-x-2" />
                     </Link>
-                    <a href="tel:+2347046197826" className="group flex items-center gap-3 text-white text-sm font-bold uppercase tracking-widest hover:text-accent-teal transition-colors">
-                        <Phone className="h-5 w-5 text-accent-teal" />
+                    <a href="tel:+2347046197826" className="group flex items-center gap-4 text-white text-lg font-bold uppercase tracking-widest hover:text-accent-gold transition-all">
+                        <div className="p-3 rounded-xl bg-white/5 border border-white/10 group-hover:border-accent-gold/50 transition-all">
+                            <Phone className="h-6 w-6 text-accent-gold" />
+                        </div>
                         Call Us Today
                     </a>
                 </div>
 
-                <div className="mt-16 pt-8 border-t border-white/5 flex flex-col items-center gap-2">
-                    <p className="text-[10px] text-slate-500 font-bold tracking-[0.3em] uppercase">
-                        Serving Nationwide, Nigeria
+                <div className="mt-20 pt-10 border-t border-white/5 flex flex-col items-center gap-4">
+                    <p className="text-[10px] text-slate-500 font-bold tracking-[0.5em] uppercase">
+                        ISO 9001:2015 Standards • Serving Nationwide, Nigeria
                     </p>
                 </div>
             </div>

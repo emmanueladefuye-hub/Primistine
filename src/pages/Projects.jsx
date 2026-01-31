@@ -60,8 +60,8 @@ const Projects = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
         >
-            <section className="py-16 md:py-20 bg-primary text-center">
-                <div className="section-padding pt-0">
+            <section className="pt-12 md:pt-16 pb-2 bg-primary text-center">
+                <div className="section-padding py-0">
                     <h1 className="text-3xl md:text-6xl font-display font-bold text-white mb-6">Our Projects</h1>
                     <p className="text-base md:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
                         A selection of our engineering work across Nigeria. Real results, built to last.
