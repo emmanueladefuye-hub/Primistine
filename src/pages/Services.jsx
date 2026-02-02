@@ -10,6 +10,8 @@ import auditImg from '../assets/media/images/team-collaboration.jpg';
 import factoryImg from '../assets/media/images/team-factory.jpg';
 import pylonImg from '../assets/media/images/high-voltage-pylon.jpg';
 
+import SEO from '../components/SEO';
+
 const Services = () => {
     const servicesList = [
         {
@@ -63,6 +65,11 @@ const Services = () => {
             transition={{ duration: 0.8 }}
             className="bg-[#020C1B]"
         >
+            <SEO
+                title="Our Services"
+                description="Professional electrical and solar engineering services. Solar installation, building wiring, safety audits, and industrial power solutions."
+                keywords="Solar Services, Electrical Wiring, Safety Audits, Industrial Electrician, Lagos"
+            />
             {/* Page Hero */}
             <section className="relative pt-12 md:pt-20 pb-12 md:pb-16 overflow-hidden bg-[#0A192F]">
                 <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: `url(${pylonImg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>

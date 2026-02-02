@@ -10,6 +10,9 @@ import Differentiation from '../components/home/Differentiation';
 import CTASection from '../components/home/CTASection';
 import BlogPreview from '../components/home/BlogPreview';
 
+import SEO from '../components/SEO';
+import SchemaMarkup from '../components/SchemaMarkup';
+
 const Home = () => {
     return (
         <motion.div
@@ -18,6 +21,8 @@ const Home = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
         >
+            <SEO />
+            <SchemaMarkup type="Organization" />
             <Hero />
             <TrustBar />
             <CoreValues />

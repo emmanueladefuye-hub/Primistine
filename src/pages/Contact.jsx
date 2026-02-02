@@ -54,6 +54,9 @@ const CustomSelect = ({ label, value, options, onChange, name }) => {
     );
 };
 
+import SEO from '../components/SEO';
+import SchemaMarkup from '../components/SchemaMarkup';
+
 const Contact = () => {
     const [formData, setFormData] = useState({
         firstName: '',
@@ -75,6 +78,14 @@ const Contact = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // 🛡️ Security: Honeypot Check
+        // If the hidden '_honey' field has a value, it's a bot.
+        if (formData._honey) {
+            console.log("Bot detected. Submission rejected.");
+            return;
+        }
+
         setIsSubmitting(true);
         setSubmitStatus(null);
 
@@ -107,6 +118,12 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
             className="bg-[#020C1B] min-h-screen"
         >
+            <SEO
+                title="Contact Us"
+                description="Get in touch with Primistine Electric Limited. Schedule a load audit or discuss your solar and electrical engineering projects."
+                keywords="Contact Primistine, Electrical Engineer Contact, Solar Quote Lagos, Book Consultant"
+            />
+            <SchemaMarkup type="LocalBusiness" />
             {/* Page Header */}
             <section className="relative pt-12 md:pt-20 pb-12 md:pb-16 overflow-hidden bg-[#0A192F]">
                 <div className="absolute inset-0 z-0 bg-gradient-to-b from-blue-900/10 to-transparent"></div>
@@ -292,6 +309,18 @@ const Contact = () => {
                                     className="w-full bg-white/5 border border-white/10 rounded-[1.5rem] p-5 text-white focus:outline-none focus:border-accent-gold focus:bg-accent-gold/5 transition-all text-sm font-medium resize-none"
                                     placeholder="Tell us about your project..."
                                 ></textarea>
+                            </div>
+
+                            {/* 🛡️ Security: Honeypot Field (Hidden) */}
+                            <div className="hidden" aria-hidden="true" style={{ display: 'none' }}>
+                                <input
+                                    type="text"
+                                    name="_honey"
+                                    value={formData._honey || ''}
+                                    onChange={handleChange}
+                                    tabIndex="-1"
+                                    autoComplete="off"
+                                />
                             </div>
 
                             <button
