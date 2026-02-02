@@ -5,14 +5,15 @@ import { wordpressService } from '../../services/wordpressService';
 import parse from 'html-react-parser';
 import DOMPurify from 'dompurify';
 
-const BlogList = ({ limit }) => {
+const BlogList = ({ limit, category }) => {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchPosts = async () => {
+            setLoading(true);
             try {
-                const data = await wordpressService.getPosts(1, limit || 10);
+                const data = await wordpressService.getPosts(1, limit || 10, category);
                 setPosts(data);
             } catch (error) {
                 console.error("Failed to fetch posts:", error);
@@ -22,7 +23,7 @@ const BlogList = ({ limit }) => {
         };
 
         fetchPosts();
-    }, [limit]);
+    }, [limit, category]);
 
     if (loading) {
         return <div className="text-white text-center py-10">Loading insights...</div>;

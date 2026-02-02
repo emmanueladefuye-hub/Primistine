@@ -34,7 +34,8 @@ const MOCK_POSTS = [
         },
         excerpt: { rendered: "<p>Traditional lead-acid batteries are failing many households. Discover why switching to Lithium-Ion is the smartest engineering decision you can make this year.</p>" },
         featured_media_url: solarRoof,
-        author_name: "Primistine Engineering Team"
+        author_name: "Primistine Engineering Team",
+        category: "Solar Education"
     },
     {
         id: 2,
@@ -66,7 +67,8 @@ const MOCK_POSTS = [
         },
         excerpt: { rendered: "<p>Don't ignore flickering lights or warm sockets. These small signs indicate massive underlying chaos that could lead to electrical fires.</p>" },
         featured_media_url: neatWiring,
-        author_name: "Engr. Primistine"
+        author_name: "Engr. Primistine",
+        category: "Electrical Safety"
     },
     {
         id: 3,
@@ -93,17 +95,22 @@ const MOCK_POSTS = [
         },
         excerpt: { rendered: "<p>Why does one phase always trip while the others stay on? Understanding 3-phase load distribution is the key to a stable commercial facility.</p>" },
         featured_media_url: distBoard,
-        author_name: "Primistine Engineering Team"
+        author_name: "Primistine Engineering Team",
+        category: "Power Systems"
     }
 ];
 
 export const wordpressService = {
     // Simulate Fetching All Posts
-    getPosts: async (page = 1, perPage = 10) => {
+    getPosts: async (page = 1, perPage = 10, category = null) => {
         // In a real app, this would be: axios.get(`${API_URL}/posts?page=${page}&per_page=${perPage}&_embed`)
         return new Promise((resolve) => {
             setTimeout(() => {
-                resolve(MOCK_POSTS);
+                let filteredPosts = MOCK_POSTS;
+                if (category && category !== "All") {
+                    filteredPosts = MOCK_POSTS.filter(post => post.category === category);
+                }
+                resolve(filteredPosts);
             }, 500); // Simulate network delay
         });
     },
@@ -121,5 +128,78 @@ export const wordpressService = {
                 }
             }, 500);
         });
+    },
+
+    // Simulate Fetching Projects (Custom Post Type)
+    getProjects: async () => {
+        // In a real app: axios.get(`${API_URL}/projects?_embed`)
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(MOCK_PROJECTS);
+            }, 800);
+        });
     }
 };
+
+const MOCK_PROJECTS = [
+    {
+        id: 101,
+        title: { rendered: "Commercial Solar Array" },
+        acf: { // Advanced Custom Fields structure
+            location: "Lekki, Lagos",
+            desc: "50kW Hybrid System for a manufacturing facility. Zero downtime achieved.",
+            type: "Solar"
+        },
+        featured_media_url: solarRoof
+    },
+    {
+        id: 102,
+        title: { rendered: "Luxury Villa Wiring" },
+        acf: {
+            location: "Banana Island, Lagos",
+            desc: "Complete concealed conduit wiring and smart automation integration.",
+            type: "Residential"
+        },
+        featured_media_url: neatWiring
+    },
+    {
+        id: 103,
+        title: { rendered: "Factory Safety Audit" },
+        acf: {
+            location: "Ogun State",
+            desc: "Comprehensive earthing improvement and distribution panel upgrade.",
+            type: "Industrial"
+        },
+        featured_media_url: distBoard
+    },
+    {
+        id: 104,
+        title: { rendered: "Office Complex Backup" },
+        acf: {
+            location: "Abuja",
+            desc: "20kVA Inverter setup with lithium battery bank for 24/7 IT operations.",
+            type: "Commercial"
+        },
+        featured_media_url: solarRoof
+    },
+    {
+        id: 105,
+        title: { rendered: "Estate Street Lighting" },
+        acf: {
+            location: "Ikeja GRA",
+            desc: "Solar-powered automated street lighting system for 50-unit estate.",
+            type: "Infrastructure"
+        },
+        featured_media_url: solarRoof
+    },
+    {
+        id: 106,
+        title: { rendered: "Hotel Power Upgrade" },
+        acf: {
+            location: "Victoria Island",
+            desc: "Switchgear replacement and load balancing for 100-room hotel.",
+            type: "Commercial"
+        },
+        featured_media_url: distBoard
+    }
+];

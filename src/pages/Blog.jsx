@@ -77,7 +77,7 @@ const Blog = () => {
             {/* Blog Grid */}
             <section className="section-padding py-16 bg-[#020C1B]">
                 <div className="max-w-[1440px] mx-auto px-5 lg:px-10">
-                    <BlogList limit={100} />
+                    <BlogList limit={100} category={activeCategory} />
                 </div>
             </section>
 

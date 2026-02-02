@@ -7,51 +7,26 @@ import wiringImg from '../assets/images/neat_wiring.png';
 import boardImg from '../assets/images/clean_distribution_board.png';
 import auditImg from '../assets/images/engineer_audit.png';
 
+import { wordpressService } from '../services/wordpressService';
+import { useState, useEffect } from 'react';
+
 const Projects = () => {
-    const projects = [
-        {
-            title: "Commercial Solar Array",
-            location: "Lekki, Lagos",
-            desc: "50kW Hybrid System for a manufacturing facility. Zero downtime achieved.",
-            type: "Solar",
-            image: solarImg
-        },
-        {
-            title: "Luxury Villa Wiring",
-            location: "Banana Island, Lagos",
-            desc: "Complete concealed conduit wiring and smart automation integration.",
-            type: "Residential",
-            image: wiringImg
-        },
-        {
-            title: "Factory Safety Audit",
-            location: "Ogun State",
-            desc: "Comprehensive earthing improvement and distribution panel upgrade.",
-            type: "Industrial",
-            image: auditImg
-        },
-        {
-            title: "Office Complex Backup",
-            location: "Abuja",
-            desc: "20kVA Inverter setup with lithium battery bank for 24/7 IT operations.",
-            type: "Commercial",
-            image: solarImg
-        },
-        {
-            title: "Estate Street Lighting",
-            location: "Ikeja GRA",
-            desc: "Solar-powered automated street lighting system for 50-unit estate.",
-            type: "Infrastructure",
-            image: solarImg
-        },
-        {
-            title: "Hotel Power Upgrade",
-            location: "Victoria Island",
-            desc: "Switchgear replacement and load balancing for 100-room hotel.",
-            type: "Commercial",
-            image: boardImg
-        }
-    ];
+    const [projects, setProjects] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchProjects = async () => {
+            try {
+                const data = await wordpressService.getProjects();
+                setProjects(data);
+            } catch (error) {
+                console.error("Failed to load projects", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchProjects();
+    }, []);
 
     return (
         <motion.div
@@ -71,32 +46,36 @@ const Projects = () => {
 
             <section className="section-padding py-0 pb-20">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {projects.map((proj, idx) => (
-                        <div key={idx} className="group bg-primary-light rounded-xl overflow-hidden border border-white/5 hover:border-accent-gold/50 transition-all">
-                            {/* Project Image */}
-                            <div className="h-48 bg-[#0F223C] overflow-hidden relative group">
-                                <img
-                                    src={proj.image}
-                                    alt={proj.title}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                    loading="lazy"
-                                    decoding="async"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#0F223C] to-transparent opacity-60"></div>
-                            </div>
-
-                            <div className="p-6">
-                                <div className="flex justify-between items-start mb-2">
-                                    <span className="text-accent-teal text-xs font-bold uppercase tracking-wider">{proj.type}</span>
-                                    <span className="text-slate-500 text-xs">{proj.location}</span>
+                    {loading ? (
+                        <div className="col-span-full text-center text-white py-20">Loading Projects...</div>
+                    ) : (
+                        projects.map((proj) => (
+                            <div key={proj.id} className="group bg-primary-light rounded-xl overflow-hidden border border-white/5 hover:border-accent-gold/50 transition-all">
+                                {/* Project Image */}
+                                <div className="h-48 bg-[#0F223C] overflow-hidden relative group">
+                                    <img
+                                        src={proj.featured_media_url}
+                                        alt={proj.title.rendered}
+                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                        loading="lazy"
+                                        decoding="async"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#0F223C] to-transparent opacity-60"></div>
                                 </div>
-                                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-accent-gold transition-colors">{proj.title}</h3>
-                                <p className="text-slate-400 text-sm leading-relaxed">
-                                    {proj.desc}
-                                </p>
+
+                                <div className="p-6">
+                                    <div className="flex justify-between items-start mb-2">
+                                        <span className="text-accent-teal text-xs font-bold uppercase tracking-wider">{proj.acf.type}</span>
+                                        <span className="text-slate-500 text-xs">{proj.acf.location}</span>
+                                    </div>
+                                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-accent-gold transition-colors">{proj.title.rendered}</h3>
+                                    <p className="text-slate-400 text-sm leading-relaxed">
+                                        {proj.acf.desc}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))
+                    )}
                 </div>
             </section>
 
